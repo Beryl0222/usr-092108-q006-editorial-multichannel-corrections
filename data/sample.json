@@ -1,0 +1,9 @@
+{
+  "event_id": "092108-006-sample-001",
+  "event_type": "DRAFT_REVIEWED",
+  "aggregate_type": "editorial_item",
+  "aggregate_id": "editorial_multichannel_corrections-001",
+  "occurred_at": "2026-09-20T18:00:00+08:00",
+  "version": 1,
+  "summary": "登记评论稿多端更正链的首条领域记录"
+}
