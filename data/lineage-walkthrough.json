@@ -1,0 +1,694 @@
+[
+  {
+    "event_id": "evt-20260918-001",
+    "event_type": "TOPIC_MEETING_LOGGED",
+    "aggregate_type": "editorial_item",
+    "aggregate_id": "ed-2026-0918-01",
+    "occurred_at": "2026-09-18T09:30:00+08:00",
+    "version": 1,
+    "summary": "选题会确定评论选题《社区食堂要办得长久》，明确基本观点与事实核查要求",
+    "actor": { "id": "u-resp-01", "role": "responsible_editor" }
+  },
+  {
+    "event_id": "evt-20260918-002",
+    "event_type": "SOURCE_REGISTERED",
+    "aggregate_type": "source_claim",
+    "aggregate_id": "src-tjj-gb-2026h1",
+    "occurred_at": "2026-09-18T10:15:00+08:00",
+    "version": 1,
+    "summary": "登记事实来源：省统计局《2026 年上半年全省社区养老服务统计公报》",
+    "actor": { "id": "u-editor-01", "role": "editor" },
+    "source_kind": "official_release",
+    "sensitivity": "normal"
+  },
+  {
+    "event_id": "evt-20260918-003",
+    "event_type": "SOURCE_REGISTERED",
+    "aggregate_type": "source_claim",
+    "aggregate_id": "src-mjxs-0907",
+    "occurred_at": "2026-09-18T10:20:00+08:00",
+    "version": 1,
+    "summary": "登记敏感线索：关于某社区食堂补贴使用情况的反映，仅限核查角色流转",
+    "actor": { "id": "u-duty-01", "role": "duty_editor" },
+    "source_kind": "tip_off",
+    "sensitivity": "restricted",
+    "visibility": ["legal_reviewer", "business_reviewer"]
+  },
+  {
+    "event_id": "evt-20260918-004",
+    "event_type": "DRAFT_SUBMITTED",
+    "aggregate_type": "editorial_item",
+    "aggregate_id": "ed-2026-0918-01",
+    "occurred_at": "2026-09-18T14:00:00+08:00",
+    "version": 2,
+    "summary": "作者提交初稿《社区食堂要办得长久》",
+    "actor": { "id": "u-author-01", "role": "author" },
+    "refs": [
+      { "aggregate_type": "source_claim", "aggregate_id": "src-tjj-gb-2026h1", "role": "source" }
+    ]
+  },
+  {
+    "event_id": "evt-20260918-005",
+    "event_type": "DRAFT_REVIEWED",
+    "aggregate_type": "editorial_item",
+    "aggregate_id": "ed-2026-0918-01",
+    "occurred_at": "2026-09-18T16:40:00+08:00",
+    "version": 3,
+    "summary": "编辑修订：压缩背景引语、核对数据引用口径并调整结尾",
+    "actor": { "id": "u-editor-01", "role": "editor" }
+  },
+  {
+    "event_id": "evt-20260918-006",
+    "event_type": "CHECK_RECORDED",
+    "aggregate_type": "editorial_item",
+    "aggregate_id": "ed-2026-0918-01",
+    "occurred_at": "2026-09-18T17:30:00+08:00",
+    "version": 4,
+    "summary": "法务核查通过：涉敏表述已按核查意见处理",
+    "actor": { "id": "u-legal-01", "role": "legal_reviewer" },
+    "check_type": "legal",
+    "result": "passed",
+    "refs": [
+      { "aggregate_type": "source_claim", "aggregate_id": "src-mjxs-0907", "role": "source" }
+    ]
+  },
+  {
+    "event_id": "evt-20260918-007",
+    "event_type": "CHECK_RECORDED",
+    "aggregate_type": "editorial_item",
+    "aggregate_id": "ed-2026-0918-01",
+    "occurred_at": "2026-09-18T18:10:00+08:00",
+    "version": 5,
+    "summary": "业务核查有条件通过：统计数据须注明统计口径",
+    "actor": { "id": "u-biz-01", "role": "business_reviewer" },
+    "check_type": "business",
+    "result": "conditional",
+    "note": "两处统计数据需注明“上半年”口径",
+    "refs": [
+      { "aggregate_type": "source_claim", "aggregate_id": "src-tjj-gb-2026h1", "role": "source" }
+    ]
+  },
+  {
+    "event_id": "evt-20260919-001",
+    "event_type": "AI_CANDIDATE_PROPOSED",
+    "aggregate_type": "ai_candidate",
+    "aggregate_id": "cand-ed-2026-0918-01-title",
+    "occurred_at": "2026-09-19T09:05:00+08:00",
+    "version": 1,
+    "summary": "系统生成标题候选 3 条，仅供责任编辑选用",
+    "actor": { "id": "sys-01", "role": "system" },
+    "candidate_kind": "title",
+    "status": "candidate",
+    "candidates": [
+      "社区食堂要办得长久",
+      "暖胃更要暖心：社区食堂如何长久飘香",
+      "社区食堂，便民之后如何可持续"
+    ],
+    "refs": [
+      { "aggregate_type": "editorial_item", "aggregate_id": "ed-2026-0918-01", "role": "parent" }
+    ]
+  },
+  {
+    "event_id": "evt-20260919-002",
+    "event_type": "AI_CANDIDATE_CONFIRMED",
+    "aggregate_type": "ai_candidate",
+    "aggregate_id": "cand-ed-2026-0918-01-title",
+    "occurred_at": "2026-09-19T09:20:00+08:00",
+    "version": 2,
+    "summary": "责任编辑确认正式标题：《社区食堂要办得长久》",
+    "actor": { "id": "u-resp-01", "role": "responsible_editor" },
+    "confirmed_by": "u-resp-01",
+    "refs": [
+      { "aggregate_type": "editorial_item", "aggregate_id": "ed-2026-0918-01", "role": "parent" }
+    ]
+  },
+  {
+    "event_id": "evt-20260919-003",
+    "event_type": "VARIANT_PREPARED",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "var-ed-2026-0918-01-print",
+    "occurred_at": "2026-09-19T10:00:00+08:00",
+    "version": 1,
+    "summary": "纸版版面适配稿就绪（评论版）",
+    "actor": { "id": "u-editor-01", "role": "editor" },
+    "channel": "print",
+    "variant_kind": "print_layout",
+    "content_ref": "rev-ed-2026-0918-01-v1",
+    "refs": [
+      { "aggregate_type": "editorial_item", "aggregate_id": "ed-2026-0918-01", "role": "parent" },
+      { "aggregate_type": "ai_candidate", "aggregate_id": "cand-ed-2026-0918-01-title", "role": "candidate" }
+    ]
+  },
+  {
+    "event_id": "evt-20260919-004",
+    "event_type": "VARIANT_PREPARED",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "var-ed-2026-0918-01-client_app",
+    "occurred_at": "2026-09-19T10:05:00+08:00",
+    "version": 1,
+    "summary": "客户端正文适配稿就绪",
+    "actor": { "id": "u-editor-01", "role": "editor" },
+    "channel": "client_app",
+    "variant_kind": "article_body",
+    "content_ref": "rev-ed-2026-0918-01-v1",
+    "refs": [
+      { "aggregate_type": "editorial_item", "aggregate_id": "ed-2026-0918-01", "role": "parent" },
+      { "aggregate_type": "ai_candidate", "aggregate_id": "cand-ed-2026-0918-01-title", "role": "candidate" }
+    ]
+  },
+  {
+    "event_id": "evt-20260919-005",
+    "event_type": "VARIANT_PREPARED",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "var-ed-2026-0918-01-short_video",
+    "occurred_at": "2026-09-19T10:10:00+08:00",
+    "version": 1,
+    "summary": "短视频口播脚本就绪（90 秒）",
+    "actor": { "id": "u-editor-01", "role": "editor" },
+    "channel": "short_video",
+    "variant_kind": "voiceover_script",
+    "content_ref": "rev-ed-2026-0918-01-v1",
+    "refs": [
+      { "aggregate_type": "editorial_item", "aggregate_id": "ed-2026-0918-01", "role": "parent" },
+      { "aggregate_type": "ai_candidate", "aggregate_id": "cand-ed-2026-0918-01-title", "role": "candidate" }
+    ]
+  },
+  {
+    "event_id": "evt-20260919-006",
+    "event_type": "VARIANT_PREPARED",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "var-ed-2026-0918-01-social_card",
+    "occurred_at": "2026-09-19T10:15:00+08:00",
+    "version": 1,
+    "summary": "社交平台卡片素材就绪",
+    "actor": { "id": "u-editor-01", "role": "editor" },
+    "channel": "social_card",
+    "variant_kind": "social_card",
+    "content_ref": "rev-ed-2026-0918-01-v1",
+    "refs": [
+      { "aggregate_type": "editorial_item", "aggregate_id": "ed-2026-0918-01", "role": "parent" },
+      { "aggregate_type": "ai_candidate", "aggregate_id": "cand-ed-2026-0918-01-title", "role": "candidate" }
+    ]
+  },
+  {
+    "event_id": "evt-20260919-007",
+    "event_type": "VARIANT_PREPARED",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "var-ed-2026-0918-01-partner_feed",
+    "occurred_at": "2026-09-19T10:20:00+08:00",
+    "version": 1,
+    "summary": "合作平台推荐流素材就绪",
+    "actor": { "id": "u-editor-01", "role": "editor" },
+    "channel": "partner_feed",
+    "variant_kind": "feed_payload",
+    "content_ref": "rev-ed-2026-0918-01-v1",
+    "refs": [
+      { "aggregate_type": "editorial_item", "aggregate_id": "ed-2026-0918-01", "role": "parent" },
+      { "aggregate_type": "ai_candidate", "aggregate_id": "cand-ed-2026-0918-01-title", "role": "candidate" }
+    ]
+  },
+  {
+    "event_id": "evt-20260919-008",
+    "event_type": "VARIANT_APPROVED",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "var-ed-2026-0918-01-print",
+    "occurred_at": "2026-09-19T10:40:00+08:00",
+    "version": 2,
+    "summary": "责任编辑确认纸版发布稿",
+    "actor": { "id": "u-resp-01", "role": "responsible_editor" },
+    "channel": "print",
+    "approved_by": "u-resp-01"
+  },
+  {
+    "event_id": "evt-20260919-009",
+    "event_type": "VARIANT_APPROVED",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "var-ed-2026-0918-01-client_app",
+    "occurred_at": "2026-09-19T10:42:00+08:00",
+    "version": 2,
+    "summary": "责任编辑确认客户端发布稿",
+    "actor": { "id": "u-resp-01", "role": "responsible_editor" },
+    "channel": "client_app",
+    "approved_by": "u-resp-01"
+  },
+  {
+    "event_id": "evt-20260919-010",
+    "event_type": "VARIANT_APPROVED",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "var-ed-2026-0918-01-short_video",
+    "occurred_at": "2026-09-19T10:44:00+08:00",
+    "version": 2,
+    "summary": "责任编辑确认短视频口播脚本",
+    "actor": { "id": "u-resp-01", "role": "responsible_editor" },
+    "channel": "short_video",
+    "approved_by": "u-resp-01"
+  },
+  {
+    "event_id": "evt-20260919-011",
+    "event_type": "VARIANT_APPROVED",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "var-ed-2026-0918-01-social_card",
+    "occurred_at": "2026-09-19T10:46:00+08:00",
+    "version": 2,
+    "summary": "责任编辑确认社交平台卡片",
+    "actor": { "id": "u-resp-01", "role": "responsible_editor" },
+    "channel": "social_card",
+    "approved_by": "u-resp-01"
+  },
+  {
+    "event_id": "evt-20260919-012",
+    "event_type": "VARIANT_APPROVED",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "var-ed-2026-0918-01-partner_feed",
+    "occurred_at": "2026-09-19T10:48:00+08:00",
+    "version": 2,
+    "summary": "责任编辑确认合作平台推荐流素材",
+    "actor": { "id": "u-resp-01", "role": "responsible_editor" },
+    "channel": "partner_feed",
+    "approved_by": "u-resp-01"
+  },
+  {
+    "event_id": "evt-20260919-013",
+    "event_type": "PUBLISH_WINDOW_SET",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "var-ed-2026-0918-01-print",
+    "occurred_at": "2026-09-19T11:00:00+08:00",
+    "version": 3,
+    "summary": "设定纸版付印窗口",
+    "actor": { "id": "u-resp-01", "role": "responsible_editor" },
+    "channel": "print",
+    "window": { "not_before": "2026-09-20T00:30:00+08:00", "not_after": "2026-09-20T04:30:00+08:00" }
+  },
+  {
+    "event_id": "evt-20260919-014",
+    "event_type": "PUBLISH_WINDOW_SET",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "var-ed-2026-0918-01-client_app",
+    "occurred_at": "2026-09-19T11:02:00+08:00",
+    "version": 3,
+    "summary": "设定客户端发布窗口",
+    "actor": { "id": "u-resp-01", "role": "responsible_editor" },
+    "channel": "client_app",
+    "window": { "not_before": "2026-09-20T06:30:00+08:00", "not_after": "2026-09-20T23:30:00+08:00" }
+  },
+  {
+    "event_id": "evt-20260919-015",
+    "event_type": "PUBLISH_WINDOW_SET",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "var-ed-2026-0918-01-short_video",
+    "occurred_at": "2026-09-19T11:04:00+08:00",
+    "version": 3,
+    "summary": "设定短视频发布窗口",
+    "actor": { "id": "u-resp-01", "role": "responsible_editor" },
+    "channel": "short_video",
+    "window": { "not_before": "2026-09-20T11:30:00+08:00", "not_after": "2026-09-20T13:00:00+08:00" }
+  },
+  {
+    "event_id": "evt-20260919-016",
+    "event_type": "PUBLISH_WINDOW_SET",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "var-ed-2026-0918-01-social_card",
+    "occurred_at": "2026-09-19T11:06:00+08:00",
+    "version": 3,
+    "summary": "设定社交平台卡片发布窗口",
+    "actor": { "id": "u-resp-01", "role": "responsible_editor" },
+    "channel": "social_card",
+    "window": { "not_before": "2026-09-20T07:00:00+08:00", "not_after": "2026-09-20T22:00:00+08:00" }
+  },
+  {
+    "event_id": "evt-20260919-017",
+    "event_type": "PUBLISH_WINDOW_SET",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "var-ed-2026-0918-01-partner_feed",
+    "occurred_at": "2026-09-19T11:08:00+08:00",
+    "version": 3,
+    "summary": "设定合作平台推荐流发布窗口",
+    "actor": { "id": "u-resp-01", "role": "responsible_editor" },
+    "channel": "partner_feed",
+    "window": { "not_before": "2026-09-20T07:30:00+08:00", "not_after": "2026-09-20T21:00:00+08:00" }
+  },
+  {
+    "event_id": "evt-20260920-001",
+    "event_type": "PUBLICATION_CONFIRMED",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "var-ed-2026-0918-01-print",
+    "occurred_at": "2026-09-20T03:10:00+08:00",
+    "version": 4,
+    "summary": "纸版随 9 月 20 日版面正式付印（版本 1）",
+    "actor": { "id": "u-resp-01", "role": "responsible_editor" },
+    "channel": "print",
+    "confirmed_by": "u-resp-01",
+    "published_version": 1
+  },
+  {
+    "event_id": "evt-20260920-002",
+    "event_type": "PUBLICATION_CONFIRMED",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "var-ed-2026-0918-01-client_app",
+    "occurred_at": "2026-09-20T06:45:00+08:00",
+    "version": 4,
+    "summary": "客户端正式发布（版本 1）",
+    "actor": { "id": "u-resp-01", "role": "responsible_editor" },
+    "channel": "client_app",
+    "confirmed_by": "u-resp-01",
+    "published_version": 1
+  },
+  {
+    "event_id": "evt-20260920-003",
+    "event_type": "PUBLICATION_CONFIRMED",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "var-ed-2026-0918-01-social_card",
+    "occurred_at": "2026-09-20T07:20:00+08:00",
+    "version": 4,
+    "summary": "社交平台卡片正式发布（版本 1）",
+    "actor": { "id": "u-resp-01", "role": "responsible_editor" },
+    "channel": "social_card",
+    "confirmed_by": "u-resp-01",
+    "published_version": 1
+  },
+  {
+    "event_id": "evt-20260920-004",
+    "event_type": "PUBLICATION_CONFIRMED",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "var-ed-2026-0918-01-partner_feed",
+    "occurred_at": "2026-09-20T07:50:00+08:00",
+    "version": 4,
+    "summary": "合作平台推荐流上线（版本 1）",
+    "actor": { "id": "u-resp-01", "role": "responsible_editor" },
+    "channel": "partner_feed",
+    "confirmed_by": "u-resp-01",
+    "published_version": 1
+  },
+  {
+    "event_id": "evt-20260920-005",
+    "event_type": "PUBLICATION_CONFIRMED",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "var-ed-2026-0918-01-short_video",
+    "occurred_at": "2026-09-20T11:50:00+08:00",
+    "version": 4,
+    "summary": "短视频口播正式发布（版本 1）",
+    "actor": { "id": "u-resp-01", "role": "responsible_editor" },
+    "channel": "short_video",
+    "confirmed_by": "u-resp-01",
+    "published_version": 1
+  },
+  {
+    "event_id": "evt-20260920-006",
+    "event_type": "CORRECTION_ORDERED",
+    "aggregate_type": "correction_action",
+    "aggregate_id": "corr-ed-2026-0918-01-01",
+    "occurred_at": "2026-09-20T15:40:00+08:00",
+    "version": 1,
+    "summary": "值班编辑发现事实引用有误，下令全渠道更正",
+    "actor": { "id": "u-duty-01", "role": "duty_editor" },
+    "reason": "事实引用有误：省统计局“上半年”日均服务人次被误写为“全年”",
+    "ordered_by": "u-duty-01",
+    "scope": {
+      "channels": ["print", "client_app", "short_video", "social_card", "partner_feed"],
+      "facts": ["社区食堂日均服务老年人次的数据口径"]
+    },
+    "refs": [
+      { "aggregate_type": "editorial_item", "aggregate_id": "ed-2026-0918-01", "role": "target" }
+    ]
+  },
+  {
+    "event_id": "evt-20260920-007",
+    "event_type": "DISPOSITION_EXECUTED",
+    "aggregate_type": "correction_action",
+    "aggregate_id": "corr-ed-2026-0918-01-01",
+    "occurred_at": "2026-09-20T16:05:00+08:00",
+    "version": 2,
+    "summary": "纸版不可撤回：定于 9 月 21 日 A05 版刊发可定位更正说明",
+    "actor": { "id": "u-editor-01", "role": "editor" },
+    "channel": "print",
+    "disposition": "correction_notice",
+    "locator": "2026-09-21 第A05版·更正与说明栏",
+    "coverage": {
+      "audience": ["纸版订阅及零售读者"],
+      "propagation_copies": ["已付印报纸（不可撤回）", "数字报存档页"]
+    },
+    "refs": [
+      { "aggregate_type": "channel_variant", "aggregate_id": "var-ed-2026-0918-01-print", "role": "variant" }
+    ]
+  },
+  {
+    "event_id": "evt-20260920-008",
+    "event_type": "DISPOSITION_EXECUTED",
+    "aggregate_type": "correction_action",
+    "aggregate_id": "corr-ed-2026-0918-01-01",
+    "occurred_at": "2026-09-20T16:10:00+08:00",
+    "version": 3,
+    "summary": "客户端替换正文至版本 2，保留完整修订记录",
+    "actor": { "id": "u-editor-01", "role": "editor" },
+    "channel": "client_app",
+    "disposition": "replace_body",
+    "revision_ref": "rev-ed-2026-0918-01-v2",
+    "coverage": {
+      "audience": ["客户端已读用户", "新访问用户"],
+      "propagation_copies": ["客户端本地缓存", "CDN 边缘缓存", "离线快照"]
+    },
+    "refs": [
+      { "aggregate_type": "channel_variant", "aggregate_id": "var-ed-2026-0918-01-client_app", "role": "variant" }
+    ]
+  },
+  {
+    "event_id": "evt-20260920-009",
+    "event_type": "DISPOSITION_EXECUTED",
+    "aggregate_type": "correction_action",
+    "aggregate_id": "corr-ed-2026-0918-01-01",
+    "occurred_at": "2026-09-20T16:20:00+08:00",
+    "version": 4,
+    "summary": "短视频仅错一处：以注释方式更正，不重剪、不下架",
+    "actor": { "id": "u-editor-01", "role": "editor" },
+    "channel": "short_video",
+    "disposition": "annotate",
+    "note": "单处口播数据错误：视频内叠加更正注释并置顶更正评论",
+    "coverage": {
+      "audience": ["已观看用户", "后续推荐曝光用户"],
+      "propagation_copies": ["原视频流", "平台缓存分片"]
+    },
+    "refs": [
+      { "aggregate_type": "channel_variant", "aggregate_id": "var-ed-2026-0918-01-short_video", "role": "variant" }
+    ]
+  },
+  {
+    "event_id": "evt-20260920-010",
+    "event_type": "DISPOSITION_EXECUTED",
+    "aggregate_type": "correction_action",
+    "aggregate_id": "corr-ed-2026-0918-01-01",
+    "occurred_at": "2026-09-20T16:25:00+08:00",
+    "version": 5,
+    "summary": "社交平台卡片替换为更正后版本",
+    "actor": { "id": "u-editor-01", "role": "editor" },
+    "channel": "social_card",
+    "disposition": "replace_card",
+    "coverage": {
+      "audience": ["已触达卡片用户"],
+      "propagation_copies": ["平台卡片缓存", "用户转发副本"]
+    },
+    "refs": [
+      { "aggregate_type": "channel_variant", "aggregate_id": "var-ed-2026-0918-01-social_card", "role": "variant" }
+    ]
+  },
+  {
+    "event_id": "evt-20260920-011",
+    "event_type": "DISPOSITION_EXECUTED",
+    "aggregate_type": "correction_action",
+    "aggregate_id": "corr-ed-2026-0918-01-01",
+    "occurred_at": "2026-09-20T16:30:00+08:00",
+    "version": 6,
+    "summary": "向合作平台发起推荐流素材更新请求",
+    "actor": { "id": "sys-01", "role": "system" },
+    "channel": "partner_feed",
+    "disposition": "update_request",
+    "coverage": {
+      "audience": ["合作平台推荐流曝光用户"],
+      "propagation_copies": ["合作方推荐缓存", "算法二次包装素材"]
+    },
+    "refs": [
+      { "aggregate_type": "channel_variant", "aggregate_id": "var-ed-2026-0918-01-partner_feed", "role": "variant" }
+    ]
+  },
+  {
+    "event_id": "evt-20260920-012",
+    "event_type": "CHANNEL_RECONCILED",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "var-ed-2026-0918-01-client_app",
+    "occurred_at": "2026-09-20T16:35:00+08:00",
+    "version": 5,
+    "summary": "客户端正文替换生效，当前有效版本 2",
+    "actor": { "id": "sys-01", "role": "system" },
+    "channel": "client_app",
+    "decision": "applied",
+    "applied_version": 2,
+    "effective_version": 2
+  },
+  {
+    "event_id": "evt-20260920-013",
+    "event_type": "CHANNEL_RECONCILED",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "var-ed-2026-0918-01-social_card",
+    "occurred_at": "2026-09-20T16:40:00+08:00",
+    "version": 5,
+    "summary": "社交平台卡片更换生效，当前有效版本 2",
+    "actor": { "id": "sys-01", "role": "system" },
+    "channel": "social_card",
+    "decision": "applied",
+    "applied_version": 2,
+    "effective_version": 2
+  },
+  {
+    "event_id": "evt-20260920-014",
+    "event_type": "CHANNEL_RECONCILED",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "var-ed-2026-0918-01-short_video",
+    "occurred_at": "2026-09-20T16:50:00+08:00",
+    "version": 5,
+    "summary": "短视频注释更正生效，当前有效版本 2",
+    "actor": { "id": "sys-01", "role": "system" },
+    "channel": "short_video",
+    "decision": "applied",
+    "applied_version": 2,
+    "effective_version": 2
+  },
+  {
+    "event_id": "evt-20260920-015",
+    "event_type": "RECEIPT_RECORDED",
+    "aggregate_type": "platform_receipt",
+    "aggregate_id": "rcpt-ing-0001",
+    "occurred_at": "2026-09-20T18:30:00+08:00",
+    "version": 1,
+    "summary": "合作平台回执：推荐流素材已更新至版本 2",
+    "actor": { "id": "partner-api-01", "role": "partner_platform" },
+    "receipt_id": "PF-RCPT-20260920-001",
+    "channel": "partner_feed",
+    "reported_version": 2
+  },
+  {
+    "event_id": "evt-20260920-016",
+    "event_type": "CHANNEL_RECONCILED",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "var-ed-2026-0918-01-partner_feed",
+    "occurred_at": "2026-09-20T18:31:00+08:00",
+    "version": 5,
+    "summary": "按回执确认合作平台推荐流已生效，当前有效版本 2",
+    "actor": { "id": "sys-01", "role": "system" },
+    "channel": "partner_feed",
+    "decision": "applied",
+    "applied_version": 2,
+    "effective_version": 2,
+    "refs": [
+      { "aggregate_type": "platform_receipt", "aggregate_id": "rcpt-ing-0001", "role": "receipt" }
+    ]
+  },
+  {
+    "event_id": "evt-20260920-017",
+    "event_type": "RECEIPT_RECORDED",
+    "aggregate_type": "platform_receipt",
+    "aggregate_id": "rcpt-ing-0002",
+    "occurred_at": "2026-09-20T18:47:00+08:00",
+    "version": 1,
+    "summary": "合作平台重复上报同一回执（PF-RCPT-20260920-001）",
+    "actor": { "id": "partner-api-01", "role": "partner_platform" },
+    "receipt_id": "PF-RCPT-20260920-001",
+    "channel": "partner_feed",
+    "reported_version": 2
+  },
+  {
+    "event_id": "evt-20260920-018",
+    "event_type": "CHANNEL_RECONCILED",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "var-ed-2026-0918-01-partner_feed",
+    "occurred_at": "2026-09-20T18:48:00+08:00",
+    "version": 6,
+    "summary": "重复回执已忽略，当前有效版本保持 2",
+    "actor": { "id": "sys-01", "role": "system" },
+    "channel": "partner_feed",
+    "decision": "ignored_duplicate",
+    "reason": "回执 PF-RCPT-20260920-001 已按版本 2 处理，重复回执不再变更状态",
+    "effective_version": 2,
+    "refs": [
+      { "aggregate_type": "platform_receipt", "aggregate_id": "rcpt-ing-0002", "role": "receipt" }
+    ]
+  },
+  {
+    "event_id": "evt-20260920-019",
+    "event_type": "RECEIPT_RECORDED",
+    "aggregate_type": "platform_receipt",
+    "aggregate_id": "rcpt-ing-0003",
+    "occurred_at": "2026-09-20T19:20:00+08:00",
+    "version": 1,
+    "summary": "合作平台乱序回执：报告版本 1（旧版）",
+    "actor": { "id": "partner-api-01", "role": "partner_platform" },
+    "receipt_id": "PF-RCPT-20260920-002",
+    "channel": "partner_feed",
+    "reported_version": 1
+  },
+  {
+    "event_id": "evt-20260920-020",
+    "event_type": "CHANNEL_RECONCILED",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "var-ed-2026-0918-01-partner_feed",
+    "occurred_at": "2026-09-20T19:21:00+08:00",
+    "version": 7,
+    "summary": "乱序旧版回执已忽略，旧版不重新置顶",
+    "actor": { "id": "sys-01", "role": "system" },
+    "channel": "partner_feed",
+    "decision": "ignored_stale",
+    "reason": "回执对应版本 1 早于当前有效版本 2，忽略且不得将旧版重新置顶",
+    "effective_version": 2,
+    "refs": [
+      { "aggregate_type": "platform_receipt", "aggregate_id": "rcpt-ing-0003", "role": "receipt" }
+    ]
+  },
+  {
+    "event_id": "evt-20260921-001",
+    "event_type": "CHANNEL_RECONCILED",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "var-ed-2026-0918-01-print",
+    "occurred_at": "2026-09-21T06:10:00+08:00",
+    "version": 5,
+    "summary": "更正说明已随 9 月 21 日 A05 版见报，纸版谱系记录至版本 2",
+    "actor": { "id": "sys-01", "role": "system" },
+    "channel": "print",
+    "decision": "applied",
+    "applied_version": 2,
+    "effective_version": 2
+  },
+  {
+    "event_id": "evt-20260921-002",
+    "event_type": "SOURCE_UPDATED",
+    "aggregate_type": "source_claim",
+    "aggregate_id": "src-tjj-gb-2026h1",
+    "occurred_at": "2026-09-21T08:40:00+08:00",
+    "version": 2,
+    "summary": "外部引用更新：省统计局修订统计公报数据",
+    "actor": { "id": "u-editor-01", "role": "editor" },
+    "change_summary": "省统计局修订公报：上半年日均服务老年人次由 12.6 万更正为 12.1 万"
+  },
+  {
+    "event_id": "evt-20260921-003",
+    "event_type": "IMPACT_ASSESSED",
+    "aggregate_type": "editorial_item",
+    "aggregate_id": "ed-2026-0918-01",
+    "occurred_at": "2026-09-21T09:15:00+08:00",
+    "version": 6,
+    "summary": "评估外部引用更新影响：核心观点仍成立，数据引用必须修正",
+    "actor": { "id": "u-resp-01", "role": "responsible_editor" },
+    "assessments": [
+      {
+        "subject": "观点：社区食堂需求真实存在，需建立可持续运营机制",
+        "status": "still_valid",
+        "note": "数据修订不改变需求判断"
+      },
+      {
+        "subject": "事实引用：日均服务老年人 12.6 万人次",
+        "status": "must_correct",
+        "note": "应更正为 12.1 万人次，并沿用“上半年”口径"
+      }
+    ],
+    "refs": [
+      { "aggregate_type": "source_claim", "aggregate_id": "src-tjj-gb-2026h1", "role": "source" }
+    ]
+  }
+]

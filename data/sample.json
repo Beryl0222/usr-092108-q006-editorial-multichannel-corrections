@@ -5,5 +5,9 @@
   "aggregate_id": "editorial_multichannel_corrections-001",
   "occurred_at": "2026-09-20T18:00:00+08:00",
   "version": 1,
-  "summary": "登记评论稿多端更正链的首条领域记录"
+  "summary": "登记评论稿多端更正链的首条领域记录",
+  "actor": {
+    "id": "u-editor-01",
+    "role": "editor"
+  }
 }

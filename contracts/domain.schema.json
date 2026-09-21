@@ -1,6 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "评论稿多端更正链领域事件",
+  "description": "稿件谱系、多端适配与更正处置的事件信封与结构约定。事件一经接收，其标识、发生时间和版本不得原地改写；业务更正以后继事件表达。",
   "type": "object",
   "required": [
     "event_id",
@@ -9,7 +10,8 @@
     "aggregate_id",
     "occurred_at",
     "version",
-    "summary"
+    "summary",
+    "actor"
   ],
   "properties": {
     "event_id": {
@@ -18,12 +20,25 @@
     },
     "event_type": {
       "type": "string",
+      "description": "谱系阶段：选题与来源（TOPIC_MEETING_LOGGED、SOURCE_REGISTERED、DRAFT_SUBMITTED、DRAFT_REVIEWED、CHECK_RECORDED）、候选与适配（AI_CANDIDATE_PROPOSED、AI_CANDIDATE_CONFIRMED、VARIANT_PREPARED、VARIANT_APPROVED、PUBLISH_WINDOW_SET、PUBLICATION_CONFIRMED）、撤改与对账（CORRECTION_ORDERED、DISPOSITION_EXECUTED、RECEIPT_RECORDED、CHANNEL_RECONCILED）、引用更新与再评估（SOURCE_UPDATED、IMPACT_ASSESSED）。",
       "enum": [
+        "TOPIC_MEETING_LOGGED",
+        "SOURCE_REGISTERED",
+        "SOURCE_UPDATED",
+        "DRAFT_SUBMITTED",
         "DRAFT_REVIEWED",
+        "CHECK_RECORDED",
+        "AI_CANDIDATE_PROPOSED",
+        "AI_CANDIDATE_CONFIRMED",
+        "VARIANT_PREPARED",
         "VARIANT_APPROVED",
+        "PUBLISH_WINDOW_SET",
         "PUBLICATION_CONFIRMED",
         "CORRECTION_ORDERED",
-        "CHANNEL_RECONCILED"
+        "DISPOSITION_EXECUTED",
+        "RECEIPT_RECORDED",
+        "CHANNEL_RECONCILED",
+        "IMPACT_ASSESSED"
       ]
     },
     "aggregate_type": {
@@ -32,7 +47,9 @@
         "editorial_item",
         "source_claim",
         "channel_variant",
-        "correction_action"
+        "correction_action",
+        "ai_candidate",
+        "platform_receipt"
       ]
     },
     "aggregate_id": {
@@ -45,11 +62,555 @@
     },
     "version": {
       "type": "integer",
-      "minimum": 1
+      "minimum": 1,
+      "description": "同一聚合内单调递增，不得重用或回退。"
     },
     "summary": {
       "type": "string",
       "minLength": 1
+    },
+    "actor": {
+      "$ref": "#/$defs/actor"
+    },
+    "refs": {
+      "type": "array",
+      "description": "谱系链接，把选题、来源、候选、变体、回执与撤改决定连成可还原的稿件谱系。",
+      "items": {
+        "$ref": "#/$defs/ref"
+      }
+    },
+    "channel": {
+      "$ref": "#/$defs/channel"
+    },
+    "sensitivity": {
+      "type": "string",
+      "enum": ["normal", "restricted"]
+    },
+    "visibility": {
+      "type": "array",
+      "description": "sensitivity 为 restricted 时必填，且只能包含核查角色。",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/role"
+      }
+    },
+    "source_kind": {
+      "type": "string",
+      "enum": ["document", "interview", "dataset", "external_article", "official_release", "tip_off"]
+    },
+    "change_summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "check_type": {
+      "type": "string",
+      "enum": ["legal", "business"]
+    },
+    "result": {
+      "type": "string",
+      "enum": ["passed", "conditional", "failed"]
+    },
+    "candidate_kind": {
+      "type": "string",
+      "enum": ["title", "summary"]
+    },
+    "status": {
+      "type": "string",
+      "description": "AI 候选事件上恒为 candidate；自动摘要或标题建议不得直接成为正式内容。"
+    },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "confirmed_by": {
+      "type": "string",
+      "minLength": 1,
+      "description": "责任编辑标识；正式发布必须经其确认。"
+    },
+    "approved_by": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ordered_by": {
+      "type": "string",
+      "minLength": 1
+    },
+    "variant_kind": {
+      "type": "string",
+      "enum": ["print_layout", "article_body", "voiceover_script", "social_card", "feed_payload"]
+    },
+    "content_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "window": {
+      "$ref": "#/$defs/window"
+    },
+    "published_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scope": {
+      "$ref": "#/$defs/scope"
+    },
+    "disposition": {
+      "type": "string",
+      "enum": [
+        "correction_notice",
+        "replace_body",
+        "annotate",
+        "recut",
+        "takedown",
+        "replace_card",
+        "update_request",
+        "takedown_request"
+      ]
+    },
+    "coverage": {
+      "$ref": "#/$defs/coverage"
+    },
+    "locator": {
+      "type": "string",
+      "minLength": 1,
+      "description": "纸版更正说明的可定位信息（日期、版面、栏目位置）。"
+    },
+    "revision_ref": {
+      "type": "string",
+      "minLength": 1,
+      "description": "客户端替换正文时指向保留的修订记录。"
+    },
+    "note": {
+      "type": "string",
+      "minLength": 1
+    },
+    "receipt_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "合作平台回执的幂等键；重复上报共享同一 receipt_id。"
+    },
+    "reported_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "decision": {
+      "type": "string",
+      "enum": ["applied", "ignored_duplicate", "ignored_stale"]
+    },
+    "applied_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "effective_version": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "对账后读者应看到的当前有效版本；重复或乱序回执不得使其回退。"
+    },
+    "assessments": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/assessment"
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "sensitivity": { "const": "restricted" }
+        }
+      },
+      "then": {
+        "required": ["visibility"],
+        "properties": {
+          "visibility": {
+            "minItems": 1,
+            "items": {
+              "enum": ["legal_reviewer", "business_reviewer"]
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "required": ["event_type"],
+        "properties": { "event_type": { "const": "TOPIC_MEETING_LOGGED" } }
+      },
+      "then": {
+        "properties": { "aggregate_type": { "const": "editorial_item" } }
+      }
+    },
+    {
+      "if": {
+        "required": ["event_type"],
+        "properties": { "event_type": { "const": "SOURCE_REGISTERED" } }
+      },
+      "then": {
+        "required": ["source_kind"],
+        "properties": { "aggregate_type": { "const": "source_claim" } }
+      }
+    },
+    {
+      "if": {
+        "required": ["event_type"],
+        "properties": { "event_type": { "const": "SOURCE_UPDATED" } }
+      },
+      "then": {
+        "required": ["change_summary"],
+        "properties": { "aggregate_type": { "const": "source_claim" } }
+      }
+    },
+    {
+      "if": {
+        "required": ["event_type"],
+        "properties": { "event_type": { "const": "DRAFT_SUBMITTED" } }
+      },
+      "then": {
+        "properties": { "aggregate_type": { "const": "editorial_item" } }
+      }
+    },
+    {
+      "if": {
+        "required": ["event_type"],
+        "properties": { "event_type": { "const": "DRAFT_REVIEWED" } }
+      },
+      "then": {
+        "properties": { "aggregate_type": { "const": "editorial_item" } }
+      }
+    },
+    {
+      "if": {
+        "required": ["event_type"],
+        "properties": { "event_type": { "const": "CHECK_RECORDED" } }
+      },
+      "then": {
+        "required": ["check_type", "result"],
+        "properties": { "aggregate_type": { "const": "editorial_item" } }
+      }
+    },
+    {
+      "if": {
+        "required": ["event_type"],
+        "properties": { "event_type": { "const": "AI_CANDIDATE_PROPOSED" } }
+      },
+      "then": {
+        "required": ["candidate_kind", "status"],
+        "properties": {
+          "aggregate_type": { "const": "ai_candidate" },
+          "status": { "const": "candidate" }
+        }
+      }
+    },
+    {
+      "if": {
+        "required": ["event_type"],
+        "properties": { "event_type": { "const": "AI_CANDIDATE_CONFIRMED" } }
+      },
+      "then": {
+        "required": ["confirmed_by"],
+        "properties": { "aggregate_type": { "const": "ai_candidate" } }
+      }
+    },
+    {
+      "if": {
+        "required": ["event_type"],
+        "properties": { "event_type": { "const": "VARIANT_PREPARED" } }
+      },
+      "then": {
+        "required": ["channel", "variant_kind"],
+        "properties": { "aggregate_type": { "const": "channel_variant" } }
+      }
+    },
+    {
+      "if": {
+        "required": ["event_type"],
+        "properties": { "event_type": { "const": "VARIANT_APPROVED" } }
+      },
+      "then": {
+        "required": ["channel", "approved_by"],
+        "properties": { "aggregate_type": { "const": "channel_variant" } }
+      }
+    },
+    {
+      "if": {
+        "required": ["event_type"],
+        "properties": { "event_type": { "const": "PUBLISH_WINDOW_SET" } }
+      },
+      "then": {
+        "required": ["channel", "window"],
+        "properties": { "aggregate_type": { "const": "channel_variant" } }
+      }
+    },
+    {
+      "if": {
+        "required": ["event_type"],
+        "properties": { "event_type": { "const": "PUBLICATION_CONFIRMED" } }
+      },
+      "then": {
+        "required": ["channel", "confirmed_by", "published_version"],
+        "properties": { "aggregate_type": { "const": "channel_variant" } }
+      }
+    },
+    {
+      "if": {
+        "required": ["event_type"],
+        "properties": { "event_type": { "const": "CORRECTION_ORDERED" } }
+      },
+      "then": {
+        "required": ["reason", "ordered_by", "scope"],
+        "properties": { "aggregate_type": { "const": "correction_action" } }
+      }
+    },
+    {
+      "if": {
+        "required": ["event_type"],
+        "properties": { "event_type": { "const": "DISPOSITION_EXECUTED" } }
+      },
+      "then": {
+        "required": ["channel", "disposition", "coverage"],
+        "properties": { "aggregate_type": { "const": "correction_action" } },
+        "allOf": [
+          {
+            "if": {
+              "required": ["channel"],
+              "properties": { "channel": { "const": "print" } }
+            },
+            "then": {
+              "required": ["locator"],
+              "properties": { "disposition": { "const": "correction_notice" } }
+            }
+          },
+          {
+            "if": {
+              "required": ["channel"],
+              "properties": { "channel": { "const": "client_app" } }
+            },
+            "then": {
+              "required": ["revision_ref"],
+              "properties": { "disposition": { "const": "replace_body" } }
+            }
+          },
+          {
+            "if": {
+              "required": ["channel"],
+              "properties": { "channel": { "const": "short_video" } }
+            },
+            "then": {
+              "properties": { "disposition": { "enum": ["annotate", "recut", "takedown"] } }
+            }
+          },
+          {
+            "if": {
+              "required": ["channel"],
+              "properties": { "channel": { "const": "social_card" } }
+            },
+            "then": {
+              "properties": { "disposition": { "enum": ["replace_card", "annotate"] } }
+            }
+          },
+          {
+            "if": {
+              "required": ["channel"],
+              "properties": { "channel": { "const": "partner_feed" } }
+            },
+            "then": {
+              "properties": { "disposition": { "enum": ["update_request", "takedown_request"] } }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "if": {
+        "required": ["event_type"],
+        "properties": { "event_type": { "const": "RECEIPT_RECORDED" } }
+      },
+      "then": {
+        "required": ["receipt_id", "channel", "reported_version"],
+        "properties": { "aggregate_type": { "const": "platform_receipt" } }
+      }
+    },
+    {
+      "if": {
+        "required": ["event_type"],
+        "properties": { "event_type": { "const": "CHANNEL_RECONCILED" } }
+      },
+      "then": {
+        "required": ["channel", "decision", "effective_version"],
+        "properties": { "aggregate_type": { "const": "channel_variant" } },
+        "allOf": [
+          {
+            "if": {
+              "required": ["decision"],
+              "properties": { "decision": { "const": "applied" } }
+            },
+            "then": {
+              "required": ["applied_version"]
+            },
+            "else": {
+              "required": ["reason"]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "if": {
+        "required": ["event_type"],
+        "properties": { "event_type": { "const": "IMPACT_ASSESSED" } }
+      },
+      "then": {
+        "required": ["assessments"],
+        "properties": { "aggregate_type": { "const": "editorial_item" } }
+      }
+    }
+  ],
+  "$defs": {
+    "actor": {
+      "type": "object",
+      "required": ["id", "role"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "role": {
+          "$ref": "#/$defs/role"
+        }
+      },
+      "additionalProperties": true
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "author",
+        "editor",
+        "responsible_editor",
+        "duty_editor",
+        "legal_reviewer",
+        "business_reviewer",
+        "system",
+        "partner_platform"
+      ]
+    },
+    "ref": {
+      "type": "object",
+      "required": ["aggregate_type", "aggregate_id", "role"],
+      "properties": {
+        "aggregate_type": {
+          "type": "string",
+          "enum": [
+            "editorial_item",
+            "source_claim",
+            "channel_variant",
+            "correction_action",
+            "ai_candidate",
+            "platform_receipt"
+          ]
+        },
+        "aggregate_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "role": {
+          "type": "string",
+          "minLength": 1,
+          "description": "谱系关系，常用值：parent、source、candidate、variant、receipt、target。"
+        }
+      },
+      "additionalProperties": true
+    },
+    "channel": {
+      "type": "string",
+      "enum": ["print", "client_app", "short_video", "social_card", "partner_feed"]
+    },
+    "window": {
+      "type": "object",
+      "required": ["not_before", "not_after"],
+      "properties": {
+        "not_before": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "not_after": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "additionalProperties": true
+    },
+    "scope": {
+      "type": "object",
+      "required": ["channels"],
+      "properties": {
+        "channels": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/channel"
+          }
+        },
+        "facts": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "coverage": {
+      "type": "object",
+      "description": "每种处置必须明确覆盖的受众与传播副本。",
+      "required": ["audience", "propagation_copies"],
+      "properties": {
+        "audience": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "propagation_copies": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "assessment": {
+      "type": "object",
+      "required": ["subject", "status"],
+      "properties": {
+        "subject": {
+          "type": "string",
+          "minLength": 1,
+          "description": "被评估的观点或事实引用。"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["still_valid", "must_correct"]
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": true
     }
   },
   "additionalProperties": true
