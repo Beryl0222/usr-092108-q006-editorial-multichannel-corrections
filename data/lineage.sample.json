@@ -1,0 +1,408 @@
+[
+  {
+    "event_id": "0921-017-001",
+    "event_type": "TOPIC_CONFERENCE_RECORDED",
+    "aggregate_type": "editorial_item",
+    "aggregate_id": "PL-2026-0921-017",
+    "occurred_at": "2026-09-21T09:30:00+08:00",
+    "version": 1,
+    "summary": "选题会确定评论方向：社区食堂可持续运营",
+    "payload": {
+      "meeting": "评论部选题会 2026-09-21 上午场",
+      "angle": "从财政补贴转向多元运营",
+      "duty_editor": "责编-周"
+    }
+  },
+  {
+    "event_id": "0921-017-002",
+    "event_type": "SOURCE_REGISTERED",
+    "aggregate_type": "source_claim",
+    "aggregate_id": "SC-301",
+    "occurred_at": "2026-09-21T10:05:00+08:00",
+    "version": 1,
+    "summary": "登记事实来源：省民政厅 2025 年社区食堂统计公报",
+    "payload": {
+      "kind": "公开统计",
+      "locator": "省民政厅官网公报 2026-03 发布",
+      "visibility": "editorial"
+    }
+  },
+  {
+    "event_id": "0921-017-003",
+    "event_type": "SOURCE_REGISTERED",
+    "aggregate_type": "source_claim",
+    "aggregate_id": "SC-302",
+    "occurred_at": "2026-09-21T10:20:00+08:00",
+    "version": 1,
+    "summary": "登记敏感线索：某食堂承包方投诉（仅限核查角色可见）",
+    "payload": {
+      "kind": "线索",
+      "visibility": "review_only",
+      "note": "细节字段仅法务与业务核查角色可读"
+    }
+  },
+  {
+    "event_id": "0921-017-004",
+    "event_type": "DRAFT_SUBMITTED",
+    "aggregate_type": "editorial_item",
+    "aggregate_id": "PL-2026-0921-017",
+    "occurred_at": "2026-09-21T15:40:00+08:00",
+    "version": 2,
+    "summary": "作者提交初稿，引用 SC-301 数据",
+    "payload": { "author": "评论员-林", "cites": ["SC-301"] }
+  },
+  {
+    "event_id": "0921-017-005",
+    "event_type": "DRAFT_REVIEWED",
+    "aggregate_type": "editorial_item",
+    "aggregate_id": "PL-2026-0921-017",
+    "occurred_at": "2026-09-21T17:10:00+08:00",
+    "version": 3,
+    "summary": "编辑修订：压缩背景段，保留数据引用",
+    "payload": { "editor": "责编-周", "revision_note": "结构调整，事实引用未改动" }
+  },
+  {
+    "event_id": "0921-017-006",
+    "event_type": "FACT_CHECK_COMPLETED",
+    "aggregate_type": "source_claim",
+    "aggregate_id": "SC-301",
+    "occurred_at": "2026-09-21T18:00:00+08:00",
+    "version": 2,
+    "summary": "业务核查通过：引用与公报原文一致（以当时版本为准）",
+    "payload": { "checker_role": "业务核查", "result": "pass" }
+  },
+  {
+    "event_id": "0921-017-007",
+    "event_type": "TITLE_SUMMARY_CANDIDATE_PROPOSED",
+    "aggregate_type": "editorial_item",
+    "aggregate_id": "PL-2026-0921-017",
+    "occurred_at": "2026-09-21T18:05:00+08:00",
+    "version": 4,
+    "summary": "系统生成标题与摘要候选 3 条（仅候选，未生效）",
+    "payload": {
+      "origin": "auto",
+      "status": "candidate",
+      "candidates": [
+        "社区食堂不能只靠补贴续命",
+        "从输血到造血：社区食堂的下一程",
+        "社区食堂可持续运营的三道坎"
+      ]
+    }
+  },
+  {
+    "event_id": "0921-017-008",
+    "event_type": "TITLE_SUMMARY_CONFIRMED",
+    "aggregate_type": "editorial_item",
+    "aggregate_id": "PL-2026-0921-017",
+    "occurred_at": "2026-09-21T18:20:00+08:00",
+    "version": 5,
+    "summary": "责任编辑确认标题与摘要，候选第 2 条生效",
+    "payload": { "confirmed_by": "责编-周", "chosen": "从输血到造血：社区食堂的下一程" }
+  },
+  {
+    "event_id": "0921-017-009",
+    "event_type": "VARIANT_PREPARED",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "PL-2026-0921-017#print",
+    "occurred_at": "2026-09-21T19:00:00+08:00",
+    "version": 1,
+    "summary": "纸版适配：评论版待排，版次 05",
+    "payload": { "channel": "print", "slot": "2026-09-22 第05版" }
+  },
+  {
+    "event_id": "0921-017-010",
+    "event_type": "VARIANT_PREPARED",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "PL-2026-0921-017#app",
+    "occurred_at": "2026-09-21T19:05:00+08:00",
+    "version": 1,
+    "summary": "客户端适配：正文+摘要卡片",
+    "payload": { "channel": "app" }
+  },
+  {
+    "event_id": "0921-017-011",
+    "event_type": "VARIANT_PREPARED",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "PL-2026-0921-017#shortvideo",
+    "occurred_at": "2026-09-21T19:20:00+08:00",
+    "version": 1,
+    "summary": "短视频口播脚本适配：90 秒，含数据口播一句",
+    "payload": { "channel": "shortvideo", "script_seconds": 90 }
+  },
+  {
+    "event_id": "0921-017-012",
+    "event_type": "VARIANT_PREPARED",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "PL-2026-0921-017#social",
+    "occurred_at": "2026-09-21T19:25:00+08:00",
+    "version": 1,
+    "summary": "社交平台卡片适配：标题+金句图",
+    "payload": { "channel": "social_card" }
+  },
+  {
+    "event_id": "0921-017-013",
+    "event_type": "VARIANT_PREPARED",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "PL-2026-0921-017#partner",
+    "occurred_at": "2026-09-21T19:30:00+08:00",
+    "version": 1,
+    "summary": "合作平台推荐流适配：供稿接口字段映射",
+    "payload": { "channel": "partner_feed" }
+  },
+  {
+    "event_id": "0921-017-014",
+    "event_type": "VARIANT_APPROVED",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "PL-2026-0921-017#print",
+    "occurred_at": "2026-09-21T20:00:00+08:00",
+    "version": 2,
+    "summary": "纸版签发",
+    "payload": { "approved_by": "值班总编-吴" }
+  },
+  {
+    "event_id": "0921-017-015",
+    "event_type": "VARIANT_APPROVED",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "PL-2026-0921-017#app",
+    "occurred_at": "2026-09-21T20:00:00+08:00",
+    "version": 2,
+    "summary": "客户端版本签发",
+    "payload": { "approved_by": "值班总编-吴" }
+  },
+  {
+    "event_id": "0921-017-016",
+    "event_type": "VARIANT_APPROVED",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "PL-2026-0921-017#shortvideo",
+    "occurred_at": "2026-09-21T20:05:00+08:00",
+    "version": 2,
+    "summary": "口播脚本签发",
+    "payload": { "approved_by": "值班总编-吴" }
+  },
+  {
+    "event_id": "0921-017-017",
+    "event_type": "VARIANT_APPROVED",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "PL-2026-0921-017#social",
+    "occurred_at": "2026-09-21T20:05:00+08:00",
+    "version": 2,
+    "summary": "社交卡片签发",
+    "payload": { "approved_by": "值班总编-吴" }
+  },
+  {
+    "event_id": "0921-017-018",
+    "event_type": "VARIANT_APPROVED",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "PL-2026-0921-017#partner",
+    "occurred_at": "2026-09-21T20:10:00+08:00",
+    "version": 2,
+    "summary": "合作平台供稿签发",
+    "payload": { "approved_by": "值班总编-吴" }
+  },
+  {
+    "event_id": "0921-017-019",
+    "event_type": "PUBLICATION_CONFIRMED",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "PL-2026-0921-017#print",
+    "occurred_at": "2026-09-22T06:00:00+08:00",
+    "version": 3,
+    "summary": "纸版付印（不可撤回）",
+    "payload": { "channel": "print", "window": "2026-09-22 晨报" }
+  },
+  {
+    "event_id": "0921-017-020",
+    "event_type": "PUBLICATION_CONFIRMED",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "PL-2026-0921-017#app",
+    "occurred_at": "2026-09-22T06:30:00+08:00",
+    "version": 3,
+    "summary": "客户端发布",
+    "payload": { "channel": "app", "window": "2026-09-22T06:30/08:00" }
+  },
+  {
+    "event_id": "0921-017-021",
+    "event_type": "PUBLICATION_CONFIRMED",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "PL-2026-0921-017#shortvideo",
+    "occurred_at": "2026-09-22T07:00:00+08:00",
+    "version": 3,
+    "summary": "短视频口播发布",
+    "payload": { "channel": "shortvideo" }
+  },
+  {
+    "event_id": "0921-017-022",
+    "event_type": "PUBLICATION_CONFIRMED",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "PL-2026-0921-017#social",
+    "occurred_at": "2026-09-22T07:05:00+08:00",
+    "version": 3,
+    "summary": "社交卡片发布",
+    "payload": { "channel": "social_card" }
+  },
+  {
+    "event_id": "0921-017-023",
+    "event_type": "PUBLICATION_CONFIRMED",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "PL-2026-0921-017#partner",
+    "occurred_at": "2026-09-22T07:10:00+08:00",
+    "version": 3,
+    "summary": "合作平台推荐流供稿",
+    "payload": { "channel": "partner_feed" }
+  },
+  {
+    "event_id": "0921-017-024",
+    "event_type": "CHANNEL_RECEIPT_RECORDED",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "PL-2026-0921-017#partner",
+    "occurred_at": "2026-09-22T07:40:00+08:00",
+    "version": 4,
+    "summary": "合作平台回执：v3 已收录并进入推荐流",
+    "payload": { "receipt_id": "rcpt-a-1", "applies_to_version": 3, "applied": true }
+  },
+  {
+    "event_id": "0921-017-025",
+    "event_type": "CHANNEL_RECEIPT_RECORDED",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "PL-2026-0921-017#partner",
+    "occurred_at": "2026-09-22T07:41:00+08:00",
+    "version": 5,
+    "summary": "合作平台重复回执：与 rcpt-a-1 内容相同，幂等忽略",
+    "payload": { "receipt_id": "rcpt-a-1", "applies_to_version": 3, "applied": false, "ignored_reason": "duplicate_receipt" }
+  },
+  {
+    "event_id": "0921-017-026",
+    "event_type": "CHANNEL_RECEIPT_RECORDED",
+    "aggregate_type": "channel_variant",
+    "aggregate_id": "PL-2026-0921-017#partner",
+    "occurred_at": "2026-09-22T09:15:00+08:00",
+    "version": 6,
+    "summary": "合作平台乱序回执：针对旧版 v2，不重新置顶",
+    "payload": { "receipt_id": "rcpt-a-0", "applies_to_version": 2, "applied": false, "ignored_reason": "stale_version_no_repin" }
+  },
+  {
+    "event_id": "0921-017-027",
+    "event_type": "SOURCE_REGISTERED",
+    "aggregate_type": "source_claim",
+    "aggregate_id": "SC-301",
+    "occurred_at": "2026-09-22T10:00:00+08:00",
+    "version": 3,
+    "summary": "外部来源更新：民政厅更正公报，食堂在营数由 2147 改为 2417",
+    "payload": { "kind": "公开统计", "supersedes_version": 2, "visibility": "editorial" }
+  },
+  {
+    "event_id": "0921-017-028",
+    "event_type": "CORRECTION_ORDERED",
+    "aggregate_type": "correction_action",
+    "aggregate_id": "CA-2026-0922-004",
+    "occurred_at": "2026-09-22T10:30:00+08:00",
+    "version": 1,
+    "summary": "值班编辑发起撤改决定：事实引用必须修正，核心观点仍成立",
+    "payload": {
+      "item": "PL-2026-0921-017",
+      "trigger_source": "SC-301@v3",
+      "impact_assessment": {
+        "viewpoints_still_valid": ["财政补贴不可持续", "需多元运营"],
+        "facts_to_correct": ["在营食堂数量 2147 应为 2417"]
+      },
+      "ordered_by": "值班编辑-郑",
+      "approved_by": "值班总编-吴"
+    }
+  },
+  {
+    "event_id": "0921-017-029",
+    "event_type": "CORRECTION_EXECUTED",
+    "aggregate_type": "correction_action",
+    "aggregate_id": "CA-2026-0922-004",
+    "occurred_at": "2026-09-22T11:00:00+08:00",
+    "version": 2,
+    "summary": "纸版处置：刊发可定位更正说明（明日 05 版）",
+    "payload": {
+      "channel": "print",
+      "strategy": "correction_notice",
+      "locator": "2026-09-23 第05版 更正栏",
+      "audience_covered": "纸质订户与档案读者",
+      "copies_covered": "已印行副本不可撤回，更正说明随次日版发行"
+    }
+  },
+  {
+    "event_id": "0921-017-030",
+    "event_type": "CORRECTION_EXECUTED",
+    "aggregate_type": "correction_action",
+    "aggregate_id": "CA-2026-0922-004",
+    "occurred_at": "2026-09-22T11:05:00+08:00",
+    "version": 3,
+    "summary": "客户端处置：替换正文并保留修订记录",
+    "payload": {
+      "channel": "app",
+      "strategy": "replace_with_history",
+      "audience_covered": "客户端全部读者，旧缓存失效后见新版",
+      "copies_covered": "线上正文与离线缓存；修订记录页保留 v3 原文"
+    }
+  },
+  {
+    "event_id": "0921-017-031",
+    "event_type": "CORRECTION_EXECUTED",
+    "aggregate_type": "correction_action",
+    "aggregate_id": "CA-2026-0922-004",
+    "occurred_at": "2026-09-22T11:10:00+08:00",
+    "version": 4,
+    "summary": "短视频处置：仅错一处数据，选择评论区置顶注释，暂不重剪",
+    "payload": {
+      "channel": "shortvideo",
+      "strategy": "annotate",
+      "options_considered": ["annotate", "reedit", "takedown"],
+      "audience_covered": "新观众见注释；已看观众通过评论区推送触达",
+      "copies_covered": "平台原片与合集副本；被搬运副本不在控制范围，已记录"
+    }
+  },
+  {
+    "event_id": "0921-017-032",
+    "event_type": "CORRECTION_EXECUTED",
+    "aggregate_type": "correction_action",
+    "aggregate_id": "CA-2026-0922-004",
+    "occurred_at": "2026-09-22T11:15:00+08:00",
+    "version": 5,
+    "summary": "社交卡片处置：撤换金句图并挂更正提示",
+    "payload": {
+      "channel": "social_card",
+      "strategy": "replace_card_with_notice",
+      "audience_covered": "卡片触达用户",
+      "copies_covered": "平台卡片缓存；用户截图不可控，已记录"
+    }
+  },
+  {
+    "event_id": "0921-017-033",
+    "event_type": "CORRECTION_EXECUTED",
+    "aggregate_type": "correction_action",
+    "aggregate_id": "CA-2026-0922-004",
+    "occurred_at": "2026-09-22T11:20:00+08:00",
+    "version": 6,
+    "summary": "合作平台处置：推送 v4 供稿并要求替换推荐流条目",
+    "payload": {
+      "channel": "partner_feed",
+      "strategy": "resupply_and_replace",
+      "audience_covered": "推荐流曝光用户",
+      "copies_covered": "合作方索引与快照，以对方回执为准"
+    }
+  },
+  {
+    "event_id": "0921-017-034",
+    "event_type": "CHANNEL_RECONCILED",
+    "aggregate_type": "editorial_item",
+    "aggregate_id": "PL-2026-0921-017",
+    "occurred_at": "2026-09-22T15:00:00+08:00",
+    "version": 6,
+    "summary": "多端对账完成：各入口当前有效版本一致，更正提示已挂载",
+    "payload": {
+      "channels": {
+        "print": "更正说明已排期 2026-09-23 第05版",
+        "app": "正文 v4 生效，修订记录可查",
+        "shortvideo": "注释置顶生效",
+        "social_card": "新卡片生效并挂更正提示",
+        "partner_feed": "对方确认替换，回执 rcpt-b-2"
+      },
+      "reader_view": "任一入口展示当前有效版本与更正提示",
+      "audit_view": "依据、审批与各渠道执行结果可由 CA-2026-0922-004 还原"
+    }
+  }
+]

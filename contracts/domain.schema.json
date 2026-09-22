@@ -19,10 +19,19 @@
     "event_type": {
       "type": "string",
       "enum": [
+        "TOPIC_CONFERENCE_RECORDED",
+        "SOURCE_REGISTERED",
+        "DRAFT_SUBMITTED",
         "DRAFT_REVIEWED",
+        "FACT_CHECK_COMPLETED",
+        "TITLE_SUMMARY_CANDIDATE_PROPOSED",
+        "TITLE_SUMMARY_CONFIRMED",
+        "VARIANT_PREPARED",
         "VARIANT_APPROVED",
         "PUBLICATION_CONFIRMED",
+        "CHANNEL_RECEIPT_RECORDED",
         "CORRECTION_ORDERED",
+        "CORRECTION_EXECUTED",
         "CHANNEL_RECONCILED"
       ]
     },
